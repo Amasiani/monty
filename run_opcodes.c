@@ -24,7 +24,7 @@ int check_codes(char *command, stack_t **stack, size_t line_num)
 		{"add", add},
 		{"sub", sub},
 		{"mul", mul},
-		{"div", div},
+		{"div", _div},
 		{"mod", mod},
 		{NULL, NULL}
 	};
@@ -35,10 +35,10 @@ int check_codes(char *command, stack_t **stack, size_t line_num)
 	{
 		if (strcmp(command, opcodes[i].opcode) == 0)
 		{
-			opcodes[i].f(stack, lin_num);
+			opcodes[i].f(stack, line_num);
 			return (ret_and_q.opcode_return);
 		}
-		i++
+		i++;
 	}
 	printf("L%u: unknown instruction %s\n", line_num, command);
 	ret_and_q.opcode_return = 1;

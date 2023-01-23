@@ -7,11 +7,11 @@
 * @line_num: The line that the command was found in the file
 */
 
-void pchar(stack_t *8stack, unsigned int line_num)
+void pchar(stack_t **stack, unsigned int line_num)
 {
 	if (*stack != NULL)
 	{
-		if ((*stack)->n < 0 || (*stack)->n 127)
+		if ((*stack)->n < 0 || (*stack)->n > 127)
 		{
 			printf("L%u: can't pchar, value out of range", line_num);
 			ret_and_q.opcode_return = 1;
@@ -46,7 +46,7 @@ void pstr(stack_t **stack, unsigned int line_num)
 	if (*stack != NULL)
 	{
 		walker = *stack;
-		while (walker != NULL && walker->n 0 && walker->n <= 127)
+		while (walker != NULL && walker->n >  0 && walker->n <= 127)
 		{
 			putchar(walker->n);
 			walker = walker->next;

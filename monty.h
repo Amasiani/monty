@@ -74,6 +74,6 @@ void add_node_end(stack_t **stack, int push_value);
 char *find_command(char *line, stack_t **stack, unsigned int line_num);
 int check_code(char *command, stack_t **stack, size_t line_num);
 int int_check(char *push_arg);
-void free_and_exit(char *line, FILE *file, stck_t *stack);
+void free_and_exit(char *line, FILE *file, stack_t *stack);
 void free_stack(stack_t *stack);
 #endif

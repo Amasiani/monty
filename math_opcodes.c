@@ -69,7 +69,7 @@ void _div(stack_t **stack, unsigned int line_num)
 	}
 	if (ret_and_q.opcode_return != 1)
 	{
-		walker->next->n = /= walker->n;
+		walker->next->n /= walker->n;
 		pop(stack, line_num);
 	}
 }

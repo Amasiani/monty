@@ -63,7 +63,7 @@ void swap(stack_t **stack, unsigned int line_num)
 		printf("L%u: can't swap, stack too short\n", line_num);
 		ret_and_q.opcode_return = 1;
 	}
-	if (ret_and_q.return_opcode != 1)
+	if (ret_and_q.opcode_return != 1)
 	{
 		tmp = walker->n;
 		walker->n = walker->next->n;

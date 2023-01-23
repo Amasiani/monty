@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	stack = NULL;
 	line = NULL;
 	size = 0;
-	line_nume = 1;
+	line_num = 1;
 	if  (argc != 2)
 	{
 		printf("usage: monty file\n");
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 	{
 		command = find_command(line, &stack, line_num);
 		if (strcmp(command, "nop"))
-			check_codes(command, &stack, line_num);
+			check_code(command, &stack, line_num);
 		if (ret_and_q.opcode_return != 0)
 		{
 			free_and_exit(line, file, stack);
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 		line_num++;
 		read = getline(&line, &size, file);
 	}
-	free_stck(stack);
+	free_stack(stack);
 	free(line);
 	fclose(file);
 	return (0);

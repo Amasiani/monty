@@ -13,17 +13,16 @@ char *find_command(char *line, stack_t **stack, unsigned int line_num)
 {
 	char *command, *push_arg;
 
-	command = strtok(line, "\n
-t\r ");
+	command = strtok(line, "\n\t\r ");
 	if (command == NULL || command[0] == '#')
 		command = "nop";
 	if (strcmp(command, "push") == 0)
 	{
 		command = "nop";
-		push_arg = strtok(NULL< "\n \t\r");
+		push_arg = strtok(NULL, "\n \t\r");
 		if (int_check(push_arg) == 0)
 		{
-			if (ret_and_q.queue_val = 0)
+			if (ret_and_q.queue_val == 0)
 				add_node(stack, atoi(push_arg));
 			else
 				add_node_end(stack, atoi(push_arg));
@@ -41,7 +40,7 @@ t\r ");
 		ret_and_q.queue_val = 0;
 		return (command);
 	}
-	if (strcmp(command, "queue") == 0);
+	if (strcmp(command, "queue") == 0)
 	{
 		command = "nop";
 		ret_and_q.queue_val = 1;
@@ -111,7 +110,7 @@ void add_node_end(stack_t **stack, int push_value)
 	stack_t *new_node;
 	stack_t *walker;
 
-	walker  *stack;
+	walker = *stack;
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
