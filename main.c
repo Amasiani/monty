@@ -11,73 +11,37 @@
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line, *command;
-	size_t size, line_num;
-	stack_t *stack;
-	ssize_t read = 0;
+	char *content;
+	ssize_t read_line = 1;
+	stack_t *stack = NULL;
+	size_t size = 0;
+	unsigned int counter = 0;
 
-	stack = NULL;
-	line = NULL;
-	size = 0;
-	line_num = 1;
-	if  (argc != 2)
+	if (argc != 2)
 	{
-		printf("usage: monty file\n");
+		fprintf(stderr, "Usage: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
-	if (file == NULL)
+	bus.file = file;
+	if (!file)
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	read = getline(&line, &size, file);
-	while (read != -1)
+	while (read_line > 0)
 	{
-		command = find_command(line, &stack, line_num);
-		if (strcmp(command, "nop"))
-			check_code(command, &stack, line_num);
-		if (ret_and_q.opcode_return != 0)
+		content = NULL;
+		read_line = getline(&content, &size, file);
+		bus.content = content;
+		counter++;
+		if (read_line > 0)
 		{
-			free_and_exit(line, file, stack);
+			execute(content, &stack, counter, file);
 		}
-		line_num++;
-		read = getline(&line, &size, file);
+		free(content);
 	}
 	free_stack(stack);
-	free(line);
 	fclose(file);
-	return (0);
-}
-
-/**
-* free_and_exit - Free all nessary memory and exit with EXIT_FAILURE
-* @line: The line found using getline
-* @file: The file opened and being read from
-* @stack: The top of the stack list
-*/
-
-void free_and_exit(char *line, FILE *file, stack_t *stack)
-{
-	free_stack(stack);
-	free(line);
-	fclose(file);
-	exit(EXIT_FAILURE);
-}
-
-/**
-* free_stack - Free all node of the stack
-* @stack: Top of the stack list
-*/
-
-void free_stack(stack_t *stack)
-{
-	stack_t *kill_node;
-
-	while (stack != NULL)
-	{
-		kill_node = stack;
-		stack = stack->next;
-		free(kill_node);
-	}
+return (0);
 }

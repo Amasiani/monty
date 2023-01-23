@@ -1,19 +1,19 @@
 /**
-* pall - Print all values in the stack
+* f_pall - Print all values in the stack
 * @stack: Doulble poineter to the top of the stack
 * @line_num: The line of the file the command was found
 */
 
-void pall(stack_t **stack, unsigned int line_num)
+void f_pall(stack_t **head, unsigned int line_number)
 {
-	stack_t *walker;
+	stack_t *h;
 
-	(void) line_num;
-	walker = *stack;
-	while (walker != NULL)
+	h = *head;
+	if (h == NULL)
+		return;
+	while (h)
 	{
-		printf("%d\n", walker->n);
-		walker = walker->next;
+		printf("%d\n", h->n);
+		h = h->next;
 	}
 }
-
