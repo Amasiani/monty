@@ -2,9 +2,9 @@
 #define MINTY_H
 
 #include <stdio.h>
-#include <stdlib>
+#include <stdlib.h>
 #include <sys/types.h>
-#include <unistd>
+#include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
 #include <ctype.h>
@@ -42,7 +42,7 @@ typedef struct bus_s
 	char *content;
 	int lifi;
 } bus_t;
-extern bust_t bus;
+extern bus_t bus;
 /**
 * typedef struct instruction_s- opcode and its function
 * @opcide: the opcode
