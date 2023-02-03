@@ -16,7 +16,7 @@ void f_swap(stack_t **head, unsigned int counter)
 	h = *head;
 	while (h)
 	{
-		h = h->head;
+		h = h->next;
 		len++;
 	}
 	if (len < 2)
