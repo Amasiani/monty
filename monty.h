@@ -21,7 +21,7 @@
 typedef struct stack_s
 {
 	int n;
-	struct stack_s *head;
+	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
 
