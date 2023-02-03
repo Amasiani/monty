@@ -21,7 +21,7 @@
 typedef struct stack_s
 {
 	int n;
-	struct stack_s *prev;
+	struct stack_s *head;
 	struct stack_s *next;
 } stack_t;
 
@@ -43,6 +43,7 @@ typedef struct bus_s
 	int lifi;
 } bus_t;
 extern bus_t bus;
+
 /**
 * typedef struct instruction_s- opcode and its function
 * @opcide: the opcode
