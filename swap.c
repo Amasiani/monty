@@ -3,7 +3,7 @@
 /**
 * f_swap - adds the top two elements of the stack.
 * @head: stack head
-* @line_number: counter
+* @counter: line number
 *
 * Return: None
 */
